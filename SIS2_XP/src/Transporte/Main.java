@@ -1,7 +1,7 @@
 
 package Transporte;
 
-import InCoordinates.InterCoordinates;
+import Geolocalizacion.Coordinates;
 import Interface.Interface;
 import Interface.Letrero;
 
@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Interface ver=new Interface();
-        InterCoordinates intro=new InterCoordinates();
+        Coordinates intro=new Coordinates();
     }
     
 }

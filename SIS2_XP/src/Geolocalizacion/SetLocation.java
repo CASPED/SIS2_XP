@@ -1,13 +1,15 @@
-package InCoordinates;
+package Geolocalizacion;
 
 import Transporte.Coordinates;
+import static jdk.nashorn.internal.objects.NativeArray.map;
 
-public class InCoordinates extends javax.swing.JPanel {
+public class SetLocation extends javax.swing.JPanel {
 
     public String lat;
     public String lon;
+    private Object navigator;
     
-    public InCoordinates() {
+    public SetLocation() {
         initComponents();
     }
 
@@ -102,7 +104,7 @@ public class InCoordinates extends javax.swing.JPanel {
         
         Coordinates date=new Coordinates(latitude,longitude);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

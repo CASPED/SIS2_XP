@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InCoordinates;
+package Geolocalizacion;
 
 import javax.swing.*;
 import javax.swing.JPanel; 
@@ -13,10 +13,10 @@ import javax.swing.JPanel;
  *
  * @author CASPED
  */
-public class InterCoordinates extends JFrame{
+public class Coordinates extends JFrame{
     JPanel panel = new javax.swing.JPanel();
     
-    public InterCoordinates(){  
+    public Coordinates(){  
         initComponents();
         setTitle("Introducir Coordenadas");
         setBounds(500, 500, 400, 300);    
@@ -24,7 +24,7 @@ public class InterCoordinates extends JFrame{
     
     private void initComponents() {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        panel= new InCoordinates();
+        panel= new SetLocation();
         getContentPane().add(panel);
         setVisible(true);
     }
