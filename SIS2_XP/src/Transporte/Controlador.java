@@ -6,6 +6,7 @@
 
 package Transporte;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -43,9 +44,16 @@ String tiempo = (hora<=9?"0":"")+hora+":"+(min<=0?"0":"")+min;
 return tiempo ;
 }
 
+
+public Color getColor(){
+Color c=new Color(0000);
+c= Color.WHITE;
+if(hora>6) c= Color.RED;
+  return c;    
+}
  
-public void contadorTiempo(Chofer chof){
-Chofer chofer= chof;
+public void setHora(int h){
+hora= h;
 
 }    
     

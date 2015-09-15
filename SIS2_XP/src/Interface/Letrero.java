@@ -1,7 +1,8 @@
 package Interface;
 
+import Transporte.Chofer;
 import Transporte.Controlador;
-import java.awt.Color;
+import Transporte.velocimetro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -11,12 +12,14 @@ public class Letrero extends javax.swing.JPanel {
     
     public String hora;
     public Controlador cont;
+    velocimetro veloc;
     
     public Letrero() {
         initComponents();
         Hora();
         init();
         cont = new Controlador();
+        veloc = new velocimetro();
     }
     
     private void init() {
@@ -268,7 +271,7 @@ public class Letrero extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextHoraActionPerformed
 
     private void jTextConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextConductorActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextConductorActionPerformed
 
     private void jTextActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActivoActionPerformed
@@ -280,15 +283,22 @@ public class Letrero extends javax.swing.JPanel {
         public void actionPerformed(ActionEvent e) {
             Hora();
             Activo();
+            velocidad();
         }       
+
+        
     };
     
     private void Activo() {
         jTextActivo.setText(cont.getHora()); 
         String[] list= cont.getHora().split(":");
-        if((Integer.parseInt(list[0]))>6){
-            jTextActivo.setBackground(Color.red);
-        }
+        jTextActivo.setBackground(cont.getColor());
+       
+    }
+    private void velocidad() {
+    
+    jTextVelocidad.setText(""+veloc.getVel());
+    jTextVelocidad.setBackground(veloc.getcolor());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

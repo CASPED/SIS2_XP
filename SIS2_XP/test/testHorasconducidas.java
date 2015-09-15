@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 
+import Transporte.Controlador;
+import java.awt.Color;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Saul
- */
+
 public class testHorasconducidas {
+    Controlador cont;
     
     public testHorasconducidas() {
     }
@@ -38,9 +38,27 @@ public class testHorasconducidas {
     // public void hello() {}
     @Test
     
-    public void Controlar(){
+    public void tiempoSobrepasado(){
+         cont = new Controlador();
+        cont.setHora(8);
+        assertEquals(Color.RED, cont.getColor());
+         cont.setHora(7);
+        assertEquals(Color.RED, cont.getColor());
+    }
     
+    @Test
+    public void tiempoAceptado(){
+     cont = new Controlador();
+        assertEquals(Color.WHITE, cont.getColor());
+        cont.setHora(2);
+        assertEquals(Color.WHITE, cont.getColor());
     
+    }
+    
+    @Test
+    public void iniciaEnCero(){
+      cont = new Controlador();
+        assertEquals("00:00", cont.getHora());
     }
     
 }
