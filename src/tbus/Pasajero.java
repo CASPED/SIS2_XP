@@ -6,8 +6,7 @@
 
 package tbus;
 
- * @author Isabel
- */
+ 
 public class Pasajero {
 
     private String nombre;
@@ -31,7 +30,7 @@ public class Pasajero {
         return apellido;
     }
 
-    public String getCi(){
+    public int getCi(){
         return ci;
     }
     
