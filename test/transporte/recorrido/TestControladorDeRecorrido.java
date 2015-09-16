@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion;
+package transporte.recorrido;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,14 +11,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import transporte.recorrido.ControladorDeRecorrido;
+import transporte.recorrido.Punto;
 
 /**
  *
  * @author kornmare
  */
-public class PruebaControladorDeRecorrido {
+public class TestControladorDeRecorrido {
 
-    public PruebaControladorDeRecorrido() {
+    public TestControladorDeRecorrido() {
     
     }
 
