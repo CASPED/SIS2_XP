@@ -1,3 +1,6 @@
+create database sisbdxp;
+use sisbdxp;
+
 -- phpMyAdmin SQL Dump
 -- version 4.2.11
 -- http://www.phpmyadmin.net
@@ -80,12 +83,12 @@ CREATE TABLE IF NOT EXISTS `linea` (
 CREATE TABLE IF NOT EXISTS `paradas` (
   `ID_PARADA` int(11) NOT NULL,
   `NOMBRE_PARADA` varchar(50) DEFAULT NULL,
-  `LONGITUD_PARADA` decimal(6,0) DEFAULT NULL,
-  `LATITUD_PARADA` decimal(6,0) DEFAULT NULL,
-  `TNORTE_PARADA` decimal(6,0) DEFAULT NULL,
-  `TSUR_PARADA` decimal(6,0) DEFAULT NULL,
-  `TOESTE_PARADA` decimal(6,0) DEFAULT NULL,
-  `TESTE_PARADA` decimal(6,0) DEFAULT NULL
+  `LONGITUD_PARADA` decimal(10,7) DEFAULT NULL,
+  `LATITUD_PARADA` decimal(10,7) DEFAULT NULL,
+  `TNORTE_PARADA` decimal(10,7) DEFAULT NULL,
+  `TSUR_PARADA` decimal(10,7) DEFAULT NULL,
+  `TOESTE_PARADA` decimal(10,7) DEFAULT NULL,
+  `TESTE_PARADA` decimal(10,7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
