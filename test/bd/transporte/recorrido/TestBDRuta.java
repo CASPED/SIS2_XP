@@ -1,15 +1,18 @@
+package bd.transporte.recorrido;
 
-
-import bd.transporte.recorrido.BDRuta;
 import org.junit.Assert;
 import org.junit.Test;
 import transporte.recorrido.ControladorDeRecorrido;
 import transporte.recorrido.Punto;
 
+/**
+ *
+ * @author kornmare
+ */
 public class TestBDRuta {
 
     @Test
-    public void prueba_para_la_ruta() {
+    public void testConsultar() {
 	double una_latitud = 0.00000;
 	double una_longitud = 0.00000;
 	double una_tolerancia_en_latitud_norte = 0.0;
@@ -17,7 +20,6 @@ public class TestBDRuta {
 	double una_tolerancia_en_longitud_este = 0.0;
 	double una_tolerancia_en_longitud_oeste = 0.0;
 	Punto un_bus = new Punto("", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
-
 	ControladorDeRecorrido unControladorDeRecorrido = new ControladorDeRecorrido(un_bus);
 
 	BDRuta la_ruta = new BDRuta("A");
