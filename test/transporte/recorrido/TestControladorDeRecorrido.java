@@ -41,7 +41,7 @@ public class TestControladorDeRecorrido {
 	double una_tolerancia_en_latitud_sur = 0.0;
 	double una_tolerancia_en_longitud_este = 0.0;
 	double una_tolerancia_en_longitud_oeste = 0.0;
-	Punto un_punto = new Punto("", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
+	Punto un_punto = new Punto("un punto", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 
 	una_latitud = 2.00000;
 	una_longitud = 2.00000;
@@ -49,7 +49,7 @@ public class TestControladorDeRecorrido {
 	una_tolerancia_en_latitud_sur = 2.0;
 	una_tolerancia_en_longitud_este = 0.0;
 	una_tolerancia_en_longitud_oeste = 2.0;
-	Punto otro_punto = new Punto("",una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
+	Punto otro_punto = new Punto("otro punto",una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 
 	una_latitud = -1.00000;
 	una_longitud = -1.00000;
@@ -69,7 +69,9 @@ public class TestControladorDeRecorrido {
 	un_bus.latitud = 1.0;
 	un_bus.longitud = 1.0;
 	Assert.assertTrue(unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto());
-
+	Assert.assertEquals("otro punto", unControladorDeRecorrido.nombre_del_punto_al_que_el_bus_se_dirije());
+	// System.out.println("otro punto");
+	
 	un_bus.latitud = 2.1;
 	un_bus.longitud = 2.1;
 	Assert.assertFalse(unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto());

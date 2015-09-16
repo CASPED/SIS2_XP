@@ -2,35 +2,75 @@ package Interface;
 
 import Transporte.Chofer;
 import Transporte.Controlador;
+import Transporte.Coordinates;
 import Transporte.velocimetro;
+import bd.transporte.recorrido.BDRuta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import javax.swing.Timer;
+import transporte.recorrido.ControladorDeRecorrido;
+import transporte.recorrido.Punto;
 
 public class Letrero extends javax.swing.JPanel {
-    
+
     public String hora;
     public Controlador cont;
     velocimetro veloc;
-    
+
+    private Punto este_bus;
+    private ControladorDeRecorrido unControladorDeRecorrido;
+    private Coordinates coordenadas_de_este_bus;
+
+    /**
+     * Ruta
+     */
+    public final void ruta() {
+	double una_latitud = -1.00000;
+	double una_longitud = -1.00000;
+	double una_tolerancia_en_latitud_norte = 0.0;
+	double una_tolerancia_en_latitud_sur = 0.0;
+	double una_tolerancia_en_longitud_este = 0.0;
+	double una_tolerancia_en_longitud_oeste = 0.0;
+	este_bus = new Punto("este_bus", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
+
+	unControladorDeRecorrido = new ControladorDeRecorrido(este_bus);
+	BDRuta la_ruta = new BDRuta("A");
+	la_ruta.consultar();
+
+	while (la_ruta.tenga_mas_paradas()) {
+	    unControladorDeRecorrido.agregarUnPunto(la_ruta.siguiente_parada());
+	}
+    }
+
+    public void actualizar_la_posicion_de_este_bus() {
+	este_bus.latitud = coordenadas_de_este_bus.getLatitude();
+	este_bus.longitud = coordenadas_de_este_bus.getLongitude();
+
+	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
+	
+	}
+    }
+
     public Letrero() {
-        initComponents();
-        Hora();
-        init();
-        cont = new Controlador();
-        veloc = new velocimetro();
+	initComponents();
+	Hora();
+	init();
+	cont = new Controlador();
+	veloc = new velocimetro();
+	ruta();
+	coordenadas_de_este_bus = new Coordinates(0, 0);
     }
-    
+
     private void init() {
-        new Timer(1000, actualizarPanel).start();
+	new Timer(1000, actualizarPanel).start();
     }
-    
-    public void Hora(){
-        Calendar calcular=Calendar.getInstance();
-        hora=calcular.get(Calendar.HOUR_OF_DAY)+":"+calcular.get(Calendar.MINUTE)+":"+calcular.get(Calendar.SECOND);
-        jTextHora.setText(hora);
-        System.out.println("Hora: "+hora);
+
+    public void Hora() {
+	Calendar calcular = Calendar.getInstance();
+	hora = calcular.get(Calendar.HOUR_OF_DAY) + ":" + calcular.get(Calendar.MINUTE) + ":" + calcular.get(Calendar.SECOND);
+	jTextHora.setText(hora);
+	System.out.println("Hora: " + hora);
     }
 
     @SuppressWarnings("unchecked")
@@ -255,50 +295,50 @@ public class Letrero extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextProximoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextProximoActionPerformed
 
     private void jTextActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActualActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextActualActionPerformed
 
     private void jTextVelocidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextVelocidadActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextVelocidadActionPerformed
 
     private void jTextHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextHoraActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextHoraActionPerformed
 
     private void jTextConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextConductorActionPerformed
-       
+
     }//GEN-LAST:event_jTextConductorActionPerformed
 
     private void jTextActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActivoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextActivoActionPerformed
-    
-    private ActionListener actualizarPanel = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Hora();
-            Activo();
-            velocidad();
-        }       
 
-        
+    private ActionListener actualizarPanel = new ActionListener() {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    Hora();
+	    Activo();
+	    velocidad();
+	}
+
     };
-    
+
     private void Activo() {
-        jTextActivo.setText(cont.getHora()); 
-        String[] list= cont.getHora().split(":");
-        jTextActivo.setBackground(cont.getColor());
-       
+	jTextActivo.setText(cont.getHora());
+	String[] list = cont.getHora().split(":");
+	jTextActivo.setBackground(cont.getColor());
+
     }
+
     private void velocidad() {
-    
-    jTextVelocidad.setText(""+veloc.getVel());
-    jTextVelocidad.setBackground(veloc.getcolor());
+
+	jTextVelocidad.setText("" + veloc.getVel());
+	jTextVelocidad.setBackground(veloc.getcolor());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

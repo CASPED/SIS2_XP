@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class ControladorDeRecorrido {
 
     private Punto este_bus;
+    private Punto punto_actual; // el punto al que el bus se dirige
 
     private int longitud_de_puntos;
     private Punto[] puntos;
@@ -51,17 +52,31 @@ public class ControladorDeRecorrido {
 
     private boolean esta_este_bus_en_el_radio_de_alcance_de_este_punto(Punto punto) {
 	if (este_bus.latitud == punto.latitud && este_bus.longitud == punto.longitud) {
-	    return true;
+	    return actualizar_estado_de_alcance(true, punto);
 	} else if (este_bus.latitud > punto.latitud && este_bus.latitud < punto.latitud + punto.tolerancia_latitud_norte) {
-	    return true;
+	    return actualizar_estado_de_alcance(true, punto);
 	} else if (este_bus.latitud < punto.latitud && este_bus.latitud > punto.latitud - punto.tolerancia_latitud_sur) {
-	    return true;
+	    return actualizar_estado_de_alcance(true, punto);
 	} else if (este_bus.longitud > punto.longitud && este_bus.longitud < punto.longitud + punto.tolerancia_longitud_este) {
-	    return true;
+	    return actualizar_estado_de_alcance(true, punto);
 	} else if (este_bus.longitud < punto.longitud && este_bus.longitud > punto.longitud - punto.tolerancia_longitud_oeste) {
-	    return true;
+	    return actualizar_estado_de_alcance(true, punto);
 	} else {
-	    return false;
+	    return actualizar_estado_de_alcance(false, null);
 	}
     }
+
+    private boolean actualizar_estado_de_alcance(boolean el_retorno, Punto punto) {
+	if (el_retorno) {
+	    punto_actual = punto;
+	} else {
+	    punto_actual = null;
+	}
+	return el_retorno;
+    }
+
+    public String nombre_del_punto_al_que_el_bus_se_dirije() {
+	return punto_actual.nombre;
+    }
+
 }
