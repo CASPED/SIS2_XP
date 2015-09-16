@@ -1,6 +1,5 @@
 package Interface;
 
-import Geolocalizacion.SetLocation;
 import Transporte.Chofer;
 import Transporte.Controlador;
 import Transporte.Coordinates;
@@ -14,86 +13,33 @@ import transporte.recorrido.ControladorDeRecorrido;
 import transporte.recorrido.Punto;
 
 public class Letrero extends javax.swing.JPanel {
-
+    
     public String hora;
     public Controlador cont;
     velocimetro veloc;
-
-    private SetLocation date;
-    private Punto este_bus;
-    private String nombre_de_parada_anterior;
-    private String nombre_de_parada_siguiente;
-    private ControladorDeRecorrido unControladorDeRecorrido;
-    private Coordinates coordenadas_de_este_bus;
-
-    /**
-     * Accede a la base de datos para llenar la ruta de paradass
-     */
-    public final void ruta() {
-	double una_latitud = -1.00000;
-	double una_longitud = -1.00000;
-	double una_tolerancia_en_latitud_norte = 0.0;
-	double una_tolerancia_en_latitud_sur = 0.0;
-	double una_tolerancia_en_longitud_este = 0.0;
-	double una_tolerancia_en_longitud_oeste = 0.0;
-	este_bus = new Punto("este_bus", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
-
-	unControladorDeRecorrido = new ControladorDeRecorrido(este_bus);
-
-	BDRuta la_ruta = new BDRuta("LINEA 300");
-	la_ruta.consultar();
-
-	while (la_ruta.tenga_mas_paradas()) {
-	    unControladorDeRecorrido.agregarUnPunto(la_ruta.siguiente_parada());
-	}
+    
+    public Punto este_bus;
+    public ControladorDeRecorrido unControladorDeRecorrido;
+    public String nombre_de_parada_anterior;
+    public String nombre_de_parada_siguiente;
+    
+    public Letrero() {
+        initComponents();
+        Hora();
+        init();
+        cont = new Controlador();
+        veloc = new velocimetro();
     }
-
-    /**
-     * Actualiza los campos de texto
-     */
-    public void actualizar_la_posicion_de_este_bus() {
-	este_bus.latitud = coordenadas_de_este_bus.getLatitude();
-	este_bus.longitud = coordenadas_de_este_bus.getLongitude();
-
-	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
-	    nombre_de_parada_anterior = nombre_de_parada_siguiente;
-	    nombre_de_parada_siguiente = unControladorDeRecorrido.nombre_del_punto_al_que_el_bus_se_dirije();
-
-	    jTextActual.setText(nombre_de_parada_anterior);
-	    jTextProximo.setText(nombre_de_parada_siguiente);
-	}
-    }
-
-    public Letrero(SetLocation loc) {
-
-	initComponents();
-	Hora();
-	cont = new Controlador();
-	veloc = new velocimetro();
-
-	ruta();
-	coordenadas_de_este_bus = loc.getDate();
-	nombre_de_parada_anterior = "";
-	nombre_de_parada_siguiente = "";
-	iniciar_componentes_de_la_ruta();
-
-	init();
-    }
-
-    private void iniciar_componentes_de_la_ruta() {
-	jTextActual.setText(nombre_de_parada_anterior);
-	jTextProximo.setText(nombre_de_parada_siguiente);
-    }
-
+    
     private void init() {
-	new Timer(1000, actualizarPanel).start();
+        new Timer(1000, actualizarPanel).start();
     }
-
-    public void Hora() {
-	Calendar calcular = Calendar.getInstance();
-	hora = calcular.get(Calendar.HOUR_OF_DAY) + ":" + calcular.get(Calendar.MINUTE) + ":" + calcular.get(Calendar.SECOND);
-	jTextHora.setText(hora);
-	System.out.println("Hora: " + hora);
+    
+    public void Hora(){
+        Calendar calcular=Calendar.getInstance();
+        hora=calcular.get(Calendar.HOUR_OF_DAY)+":"+calcular.get(Calendar.MINUTE)+":"+calcular.get(Calendar.SECOND);
+        jTextHora.setText(hora);
+        System.out.println("Hora: "+hora);
     }
 
     @SuppressWarnings("unchecked")
@@ -318,51 +264,100 @@ public class Letrero extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextProximoActionPerformed
-	// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextProximoActionPerformed
 
     private void jTextActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActualActionPerformed
-	// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextActualActionPerformed
 
     private void jTextVelocidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextVelocidadActionPerformed
-	// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextVelocidadActionPerformed
 
     private void jTextHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextHoraActionPerformed
-	// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextHoraActionPerformed
 
     private void jTextConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextConductorActionPerformed
-
+       
     }//GEN-LAST:event_jTextConductorActionPerformed
 
     private void jTextActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActivoActionPerformed
-	// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextActivoActionPerformed
-
+    
     private ActionListener actualizarPanel = new ActionListener() {
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	    Hora();
-	    Activo();
-	    velocidad();
-	    actualizar_la_posicion_de_este_bus();
-	}
-
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Hora();
+            Activo();
+            velocidad();
+            ActualizarPosicion();
+        }       
+  
     };
-
+    
     private void Activo() {
-	jTextActivo.setText(cont.getHora());
-	String[] list = cont.getHora().split(":");
-	jTextActivo.setBackground(cont.getColor());
-
+        jTextActivo.setText(cont.getHora()); 
+        String[] list= cont.getHora().split(":");
+        jTextActivo.setBackground(cont.getColor());
+       
     }
-
+    
     private void velocidad() {
+    
+    jTextVelocidad.setText(""+veloc.getVel());
+    jTextVelocidad.setBackground(veloc.getcolor());
+    }
+    
+    public final void ruta() {
+	double una_latitud = -1.00000;
+	double una_longitud = -1.00000;
+	double una_tolerancia_en_latitud_norte = 0.0;
+	double una_tolerancia_en_latitud_sur = 0.0;
+	double una_tolerancia_en_longitud_este = 0.0;
+	double una_tolerancia_en_longitud_oeste = 0.0;
+	este_bus = new Punto("este_bus", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 
-	jTextVelocidad.setText("" + veloc.getVel());
-	jTextVelocidad.setBackground(veloc.getcolor());
+	unControladorDeRecorrido = new ControladorDeRecorrido(este_bus);
+
+	BDRuta la_ruta = new BDRuta("LINEA 300");
+	la_ruta.consultar();
+
+	while (la_ruta.tenga_mas_paradas()) {
+	    unControladorDeRecorrido.agregarUnPunto(la_ruta.siguiente_parada());
+	}
+    }
+    
+    /**
+     * Actualiza los campos de texto
+     */
+    public void ActualizarPosicion() {
+        ruta();
+	//coordenadas_de_este_bus = loc.getDate();
+        Coordinates localizar=new Coordinates();
+        double lat=localizar.getLatitude();
+        double lon=localizar.getLongitude();
+        
+        System.out.println("Latitud Recuperada: "+lat);
+        System.out.println("Longitud Recuperada: "+lon);
+              
+	nombre_de_parada_anterior = "";
+	nombre_de_parada_siguiente = "";
+        
+	//este_bus.latitud = coordenadas_de_este_bus.getLatitude();
+	//este_bus.longitud = coordenadas_de_este_bus.getLongitude();
+        este_bus.latitud = lat;
+        este_bus.longitud = lon;
+
+	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
+	    nombre_de_parada_anterior = nombre_de_parada_siguiente;
+	    nombre_de_parada_siguiente = unControladorDeRecorrido.nombre_del_punto_al_que_el_bus_se_dirije();
+
+	    jTextActual.setText(nombre_de_parada_anterior);
+	    jTextProximo.setText(nombre_de_parada_siguiente);
+	}
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

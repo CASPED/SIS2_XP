@@ -6,7 +6,6 @@
  */
 package Interface;
 
-import Geolocalizacion.SetLocation;
 import javax.swing.*;
 import javax.swing.JPanel; 
 
@@ -17,15 +16,15 @@ import javax.swing.JPanel;
 public class Interface extends JFrame{
     JPanel panel = new javax.swing.JPanel();
     
-    public Interface(SetLocation loc){  
-        initComponents(loc);
+    public Interface(){  
+        initComponents();
         setTitle("Letrero");
         setBounds(500, 200, 900, 300);    
     } 
     
-    private void initComponents(SetLocation loc) {
+    private void initComponents() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        panel= new Letrero(loc);
+        panel= new Letrero();
         getContentPane().add(panel);
         setVisible(true);
     }

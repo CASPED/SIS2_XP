@@ -7,10 +7,10 @@ import javax.swing.JPanel;
  *
  * @author CASPED
  */
-public class Coordinates extends JFrame{
-    private SetLocation panel;
+public class Localizate extends JFrame{
+    JPanel panel = new javax.swing.JPanel();
     
-    public Coordinates(){  
+    public Localizate(){  
         initComponents();
         setTitle("Introducir Coordenadas");
         setBounds(500, 500, 400, 300);    
@@ -21,9 +21,5 @@ public class Coordinates extends JFrame{
         panel= new SetLocation();
         getContentPane().add(panel);
         setVisible(true);        
-    }
-    
-    public SetLocation getSetLocation() {
-	return panel;
     }
 }

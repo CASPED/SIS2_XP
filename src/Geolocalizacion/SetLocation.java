@@ -11,10 +11,7 @@ public class SetLocation extends javax.swing.JPanel {
     public String lon;
     private Object navigator;
     
-    private Coordinates date;
-    
     public SetLocation() {
-	date = new Coordinates(0,0);
         initComponents();
         init();
     }
@@ -27,12 +24,20 @@ public class SetLocation extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextLatitud = new javax.swing.JTextField();
         jTextLongitud = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextLatitudGEO = new javax.swing.JTextField();
+        jTextLongitudGEO = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("INTRODUCIR COORDENADAS");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -51,6 +56,16 @@ public class SetLocation extends javax.swing.JPanel {
             }
         });
 
+        jTextLatitudGEO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextLatitudGEOActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("GEOLOCALIZACION");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,33 +74,45 @@ public class SetLocation extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel2)))
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextLongitud, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(68, 68, 68))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28))
+                        .addComponent(jLabel3)
+                        .addGap(96, 96, 96))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(126, 126, 126)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextLatitudGEO, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextLongitudGEO, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(jLabel5)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextLatitudGEO, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLongitudGEO, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -93,9 +120,9 @@ public class SetLocation extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -104,17 +131,20 @@ public class SetLocation extends javax.swing.JPanel {
         lon=jTextLongitud.getText();
         double latitude=Double.parseDouble(lat);
         double longitude=Double.parseDouble(lon);
-        System.out.println("Latitud: "+latitude);
-        System.out.println("Longitud: "+longitude);
+        System.out.println("Latitud Introducida: "+latitude);
+        System.out.println("Longitud Introducida: "+longitude);
         
-        date.setLatitude(latitude);
-	date.setLongitude(longitude);
+        Coordinates date=new Coordinates(latitude,longitude);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextLatitudGEOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextLatitudGEOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextLatitudGEOActionPerformed
    
    private ActionListener actualizarPanel = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-        //   Localizacion();
+           Localizacion();
         }       
     };
    
@@ -123,9 +153,9 @@ public class SetLocation extends javax.swing.JPanel {
        localizar.iniciar();
        localizar.start();
        String lat=localizar.getLatitude();
-       String lon=localizar.getLatitude();
-       jTextLatitud.setText(lat);
-       jTextLongitud.setText(lon);
+       String lon=localizar.getLongitude();
+       jTextLatitudGEO.setText(lat);
+       jTextLongitudGEO.setText(lon);
        
        double latitude=Double.parseDouble(lat);
        double longitude=Double.parseDouble(lon);
@@ -133,16 +163,16 @@ public class SetLocation extends javax.swing.JPanel {
        Coordinates date=new Coordinates(latitude,longitude);
    }  
    
-   public Coordinates getDate() {
-       return date;
-   }
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextLatitud;
+    private javax.swing.JTextField jTextLatitudGEO;
     private javax.swing.JTextField jTextLongitud;
+    private javax.swing.JTextField jTextLongitudGEO;
     // End of variables declaration//GEN-END:variables
 }

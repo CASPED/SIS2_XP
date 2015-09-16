@@ -2,8 +2,12 @@
 package Transporte;
 
 public class Coordinates {
-    private double latitude; //in decimal degrees.
-    private double longitude; //in decimal degrees.
+    public static double latitude; //in decimal degrees.
+    public static double longitude; //in decimal degrees.
+    
+    public Coordinates() {
+        
+    }
 
     public Coordinates(double latitude, double longitude) {
         this.latitude = latitude;
@@ -23,10 +27,13 @@ public class Coordinates {
    }
 
     public double getLatitude() {
+        System.out.println("Latitud Guardada: "+latitude);
         return latitude;
     }
 
     public double getLongitude() {
+        System.out.println("Longitud Guardada: "+longitude);
         return longitude;
+  
     }
 }

@@ -1,15 +1,14 @@
 
 package Transporte;
 
-import Geolocalizacion.Coordinates;
+import Geolocalizacion.Localizate;
 import Interface.Interface;
-import Interface.Letrero;
 
 public class Main {
 
     public static void main(String[] args) {
-        Coordinates intro=new Coordinates();
-        Interface ver=new Interface(intro.getSetLocation());
+        Interface ver=new Interface();
+        Localizate intro=new Localizate();
     }
     
 }
