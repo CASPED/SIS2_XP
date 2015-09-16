@@ -27,7 +27,7 @@ public class Letrero extends javax.swing.JPanel {
     private Coordinates coordenadas_de_este_bus;
 
     /**
-     * Ruta
+     * Accede a la base de datos para llenar la ruta de paradass
      */
     public final void ruta() {
 	double una_latitud = -1.00000;
@@ -46,10 +46,11 @@ public class Letrero extends javax.swing.JPanel {
 	while (la_ruta.tenga_mas_paradas()) {
 	    unControladorDeRecorrido.agregarUnPunto(la_ruta.siguiente_parada());
 	}
-	
-	System.out.println("El tamaño de la ruta es: " + unControladorDeRecorrido.numero_de_puntos());
     }
 
+    /**
+     * Actualiza los campos de texto
+     */
     public void actualizar_la_posicion_de_este_bus() {
 	este_bus.latitud = coordenadas_de_este_bus.getLatitude();
 	este_bus.longitud = coordenadas_de_este_bus.getLongitude();
@@ -57,7 +58,7 @@ public class Letrero extends javax.swing.JPanel {
 	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
 	    nombre_de_parada_anterior = nombre_de_parada_siguiente;
 	    nombre_de_parada_siguiente = unControladorDeRecorrido.nombre_del_punto_al_que_el_bus_se_dirije();
-	    
+
 	    jTextActual.setText(nombre_de_parada_anterior);
 	    jTextProximo.setText(nombre_de_parada_siguiente);
 	}
