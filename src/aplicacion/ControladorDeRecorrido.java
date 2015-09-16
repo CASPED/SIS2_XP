@@ -54,11 +54,11 @@ public class ControladorDeRecorrido {
 	    return true;
 	} else if (este_bus.latitud > punto.latitud && este_bus.latitud < punto.latitud + punto.tolerancia_latitud_norte) {
 	    return true;
-	} else if (este_bus.latitud < punto.latitud && este_bus.latitud > punto.latitud + punto.tolerancia_latitud_sur) {
+	} else if (este_bus.latitud < punto.latitud && este_bus.latitud > punto.latitud - punto.tolerancia_latitud_sur) {
 	    return true;
 	} else if (este_bus.longitud > punto.longitud && este_bus.longitud < punto.longitud + punto.tolerancia_longitud_este) {
 	    return true;
-	} else if (este_bus.longitud < punto.longitud && este_bus.longitud > punto.longitud + punto.tolerancia_longitud_oeste) {
+	} else if (este_bus.longitud < punto.longitud && este_bus.longitud > punto.longitud - punto.tolerancia_longitud_oeste) {
 	    return true;
 	} else {
 	    return false;

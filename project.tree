@@ -1,0 +1,12 @@
+project
+	|-bin
+	|-doc
+	|-include
+	|-lib
+		|-mysql-connector-java-5.1.35-bin.jar
+	|-src
+		|-interfase
+		|-transporte
+			|-recorrido
+		|-utilitarios
+	|-test
