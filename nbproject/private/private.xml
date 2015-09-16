@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/src/bd/transporte/recorrido/BDRuta.java</file>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/src/transporte/recorrido/ControladorDeRecorrido.java</file>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Geolocalizacion/SetLocation.java</file>
             <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/test/bd/transporte/recorrido/TestBDRuta.java</file>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/test/transporte/recorrido/TestControladorDeRecorrido.java</file>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Interface/Letrero.java</file>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Transporte/Coordinates.java</file>
+            <file>file:/home/kornmare/Kornmenuse/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Geolocalizacion/Coordinates.java</file>
         </group>
     </open-files>
 </project-private>

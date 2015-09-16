@@ -80,10 +80,10 @@ public class GetLocation extends Thread{
     }
     
     public String getLatitude() {
-        return latitude+10;
+        return latitude;
     }
 
     public String getLongitude() {
-        return longitude+10;
+        return longitude;
     }
 }

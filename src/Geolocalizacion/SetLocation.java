@@ -11,7 +11,10 @@ public class SetLocation extends javax.swing.JPanel {
     public String lon;
     private Object navigator;
     
+    private Coordinates date;
+    
     public SetLocation() {
+	date = new Coordinates(0,0);
         initComponents();
         init();
     }
@@ -104,13 +107,14 @@ public class SetLocation extends javax.swing.JPanel {
         System.out.println("Latitud: "+latitude);
         System.out.println("Longitud: "+longitude);
         
-        Coordinates date=new Coordinates(latitude,longitude);
+        date.setLatitude(latitude);
+	date.setLongitude(longitude);
     }//GEN-LAST:event_jButton1ActionPerformed
    
    private ActionListener actualizarPanel = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-           Localizacion();
+        //   Localizacion();
         }       
     };
    
@@ -128,6 +132,10 @@ public class SetLocation extends javax.swing.JPanel {
        
        Coordinates date=new Coordinates(latitude,longitude);
    }  
+   
+   public Coordinates getDate() {
+       return date;
+   }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
  * @author CASPED
  */
 public class Coordinates extends JFrame{
-    JPanel panel = new javax.swing.JPanel();
+    private SetLocation panel;
     
     public Coordinates(){  
         initComponents();
@@ -21,5 +21,9 @@ public class Coordinates extends JFrame{
         panel= new SetLocation();
         getContentPane().add(panel);
         setVisible(true);        
+    }
+    
+    public SetLocation getSetLocation() {
+	return panel;
     }
 }

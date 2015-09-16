@@ -1,5 +1,6 @@
 package Interface;
 
+import Geolocalizacion.SetLocation;
 import Transporte.Chofer;
 import Transporte.Controlador;
 import Transporte.Coordinates;
@@ -18,6 +19,7 @@ public class Letrero extends javax.swing.JPanel {
     public Controlador cont;
     velocimetro veloc;
 
+    private SetLocation date;
     private Punto este_bus;
     private String nombre_de_parada_anterior;
     private String nombre_de_parada_siguiente;
@@ -61,7 +63,7 @@ public class Letrero extends javax.swing.JPanel {
 	}
     }
 
-    public Letrero() {
+    public Letrero(SetLocation loc) {
 
 	initComponents();
 	Hora();
@@ -69,7 +71,7 @@ public class Letrero extends javax.swing.JPanel {
 	veloc = new velocimetro();
 
 	ruta();
-	coordenadas_de_este_bus = new Coordinates(0, 0);
+	coordenadas_de_este_bus = loc.getDate();
 	nombre_de_parada_anterior = "";
 	nombre_de_parada_siguiente = "";
 	iniciar_componentes_de_la_ruta();
