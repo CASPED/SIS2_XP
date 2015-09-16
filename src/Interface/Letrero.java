@@ -50,23 +50,33 @@ public class Letrero extends javax.swing.JPanel {
 	este_bus.longitud = coordenadas_de_este_bus.getLongitude();
 
 	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
-
+	    nombre_de_parada_anterior = nombre_de_parada_siguiente;
+	    nombre_de_parada_siguiente = unControladorDeRecorrido.nombre_del_punto_al_que_el_bus_se_dirije();
+	    
+	    jTextActual.setText(nombre_de_parada_anterior);
+	    jTextProximo.setText(nombre_de_parada_siguiente);
 	}
     }
 
     public Letrero() {
 
-	nombre_de_parada_anterior = "";
-	nombre_de_parada_siguiente = "";
-
 	initComponents();
 	Hora();
-	init();
 	cont = new Controlador();
 	veloc = new velocimetro();
 
 	ruta();
 	coordenadas_de_este_bus = new Coordinates(0, 0);
+	nombre_de_parada_anterior = "";
+	nombre_de_parada_siguiente = "";
+	iniciar_componentes_de_la_ruta();
+
+	init();
+    }
+
+    private void iniciar_componentes_de_la_ruta() {
+	jTextActual.setText(nombre_de_parada_anterior);
+	jTextProximo.setText(nombre_de_parada_siguiente);
     }
 
     private void init() {
@@ -331,6 +341,7 @@ public class Letrero extends javax.swing.JPanel {
 	    Hora();
 	    Activo();
 	    velocidad();
+	    actualizar_la_posicion_de_este_bus();
 	}
 
     };
