@@ -22,3 +22,5 @@ nb-configuration.xml
 hs_err_pid*
 /nbproject/private/
 /build/
+/Base de Datos/nbproject/private/
+/Base de Datos/build/

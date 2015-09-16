@@ -19,21 +19,6 @@ import org.junit.Test;
  */
 public class PruebaPunto {
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     @Test
     public void test() {
@@ -43,7 +28,7 @@ public class PruebaPunto {
 	double una_tolerancia_en_latitud_sur = 0.5;
 	double una_tolerancia_en_longitud_este = 0.5;
 	double una_tolerancia_en_longitud_oeste = 0.5;
-	Punto un_punto = new Punto(una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
+	Punto un_punto = new Punto("",una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 
 	una_latitud = 2.00000;
 	una_longitud = 2.00000;
@@ -51,7 +36,7 @@ public class PruebaPunto {
 	una_tolerancia_en_latitud_sur = 0.7;
 	una_tolerancia_en_longitud_este = 0.7;
 	una_tolerancia_en_longitud_oeste = 0.7;
-	Punto otro_punto = new Punto(una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
+	Punto otro_punto = new Punto("",una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 
 	Assert.assertEquals(2.30000, un_punto.latitud);
 	Assert.assertEquals(2.55555, un_punto.longitud);

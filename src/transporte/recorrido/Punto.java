@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion;
+package transporte.recorrido;
 
 /**
  *
@@ -11,6 +11,7 @@ package aplicacion;
  */
 public class Punto {
 
+    public String nombre;
     public double latitud;
     public double longitud;
     public double tolerancia_latitud_norte;
@@ -18,7 +19,8 @@ public class Punto {
     public double tolerancia_longitud_este;
     public double tolerancia_longitud_oeste;
 
-    public Punto(double una_latitud, double una_longitud, double una_tolerancia_en_latitud_norte, double una_tolerancia_en_latitud_sur, double una_tolerancia_en_longitud_este, double una_tolerancia_en_longitud_oeste) {
+    public Punto(String un_nombre, double una_latitud, double una_longitud, double una_tolerancia_en_latitud_norte, double una_tolerancia_en_latitud_sur, double una_tolerancia_en_longitud_este, double una_tolerancia_en_longitud_oeste) {
+	nombre = un_nombre;
 	latitud = una_latitud;
 	longitud = una_longitud;
 	tolerancia_latitud_norte = una_tolerancia_en_latitud_norte;

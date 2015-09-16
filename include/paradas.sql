@@ -7,3 +7,6 @@ values ( 0, "Sacaba", -17.4073214, -66.03781, 0.0, 0.0, 0.0, 0.0),
 (4, "Sipe Sipe", -17.4232373,-66.3267879, 0.0010234, 0.0, 0.0, 0.0126977);
 
 insert into linea (ID_LINEA, NOMBRE_LINEA) values (0, "A");
+
+insert into ruta (ID_PARADA, ID_LINEA, ID_RUTA) 
+values (0, 0, 0), (1, 0, 0), (2, 0, 0), (3, 0, 0), (4, 0, 0);

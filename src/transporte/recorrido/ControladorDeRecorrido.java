@@ -1,4 +1,4 @@
-package aplicacion;
+package transporte.recorrido;
 
 import java.util.Arrays;
 
