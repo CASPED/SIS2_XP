@@ -40,7 +40,7 @@ public class Letrero extends javax.swing.JPanel {
 
 	unControladorDeRecorrido = new ControladorDeRecorrido(este_bus);
 
-	BDRuta la_ruta = new BDRuta("A");
+	BDRuta la_ruta = new BDRuta("LINEA 300");
 	la_ruta.consultar();
 
 	while (la_ruta.tenga_mas_paradas()) {

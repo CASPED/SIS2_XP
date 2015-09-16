@@ -4,38 +4,32 @@
  * and open the template in the editor.
  */
 package Transporte;
-
+import  bd.i.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
  *
- * @author root
+ * @author irvin
  */
 public class MookPunto {
     private String Site;
-    private Coordinates cordenada;
+    private double latitud;
+    private double longitud;
 
-    public MookPunto(String Site, Coordinates cordenada) {
-        this.Site = Site;
-        this.cordenada = cordenada;
+    public MookPunto() {
     }
 
-    public String getSite() {
-        return Site;
-    }
-
-    public void setSite(String Site) {
+    public MookPunto(String Site) {
         this.Site = Site;
     }
-
-    public Coordinates getCordenada() {
-        return cordenada;
-    }
-
-    public void setCordenada(Coordinates cordenada) {
-        this.cordenada = cordenada;
+    
+    public MookPunto(String Site, double latitud, double longitud) {
+        this.Site = Site;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     @Override
@@ -53,33 +47,35 @@ public class MookPunto {
         return true;
     }
     
-    public ArrayList<MookPunto> obtenerRuta(){
-        ArrayList<MookPunto> resp = new ArrayList<MookPunto>();
-        MookPunto punto = new MookPunto("Laguna",
-                new Coordinates(47.08712, 57.08712));
-        resp.add(punto);
-        punto = new MookPunto("UMSS",
-                new Coordinates(47.08713, 57.08715));
-        resp.add(punto);
-        punto = new MookPunto("UCB",
-                new Coordinates(47.08714, 57.08717));
-        resp.add(punto);
-        punto = new MookPunto("IC NORTE",
-                new Coordinates(47.08715, 57.08719));
-        resp.add(punto);
-        punto = new MookPunto("IC NORTE 2",
-                new Coordinates(47.08716, 57.08721));
-        resp.add(punto);
-        punto = new MookPunto("Blanco Galindo",
-                new Coordinates(47.08717, 57.08723));
-        resp.add(punto);
+    public List<MookPunto> obtenerRuta() throws SQLException{
+        int ID_LINEA = 1100;
+        ObtenerRutas rutas = new ObtenerRutas();
+        List<MookPunto> resp = new ArrayList<MookPunto>();
+        resp = rutas.getDatos(ID_LINEA);
         return resp;
     }
 
-    public MookPunto(String Site) {
+    public String getSite() {
+        return Site;
+    }
+
+    public void setSite(String Site) {
         this.Site = Site;
     }
 
-    public MookPunto() {
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 }

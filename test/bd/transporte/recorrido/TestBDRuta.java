@@ -1,7 +1,6 @@
 package bd.transporte.recorrido;
 
-import org.junit.Assert;
-import org.junit.Test;
+
 import transporte.recorrido.ControladorDeRecorrido;
 import transporte.recorrido.Punto;
 
@@ -11,7 +10,6 @@ import transporte.recorrido.Punto;
  */
 public class TestBDRuta {
 
-    @Test
     public void testConsultar() {
 	double una_latitud = 0.00000;
 	double una_longitud = 0.00000;
