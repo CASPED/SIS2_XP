@@ -37,12 +37,15 @@ public class Letrero extends javax.swing.JPanel {
 	este_bus = new Punto("este_bus", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 
 	unControladorDeRecorrido = new ControladorDeRecorrido(este_bus);
+
 	BDRuta la_ruta = new BDRuta("A");
 	la_ruta.consultar();
 
 	while (la_ruta.tenga_mas_paradas()) {
 	    unControladorDeRecorrido.agregarUnPunto(la_ruta.siguiente_parada());
 	}
+	
+	System.out.println("El tamaño de la ruta es: " + unControladorDeRecorrido.numero_de_puntos());
     }
 
     public void actualizar_la_posicion_de_este_bus() {

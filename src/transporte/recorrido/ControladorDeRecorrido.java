@@ -37,8 +37,8 @@ public class ControladorDeRecorrido {
 
     public boolean estaElBusEnElRadioDeAlcanceDeAlgunPunto() {
 	boolean respuesta = false;
-	for (Punto punto : puntos) {
-	    if (esta_este_bus_en_el_radio_de_alcance_de_este_punto(punto)) {
+	for (int i = 0; i < indice_de_la_posicion_en_el_arreglo_de_puntos ; i++) {
+	    if (esta_este_bus_en_el_radio_de_alcance_de_este_punto(puntos[i])) {
 		respuesta = true;
 		break;
 	    }
