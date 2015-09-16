@@ -19,6 +19,8 @@ public class Letrero extends javax.swing.JPanel {
     velocimetro veloc;
 
     private Punto este_bus;
+    private String nombre_de_parada_anterior;
+    private String nombre_de_parada_siguiente;
     private ControladorDeRecorrido unControladorDeRecorrido;
     private Coordinates coordenadas_de_este_bus;
 
@@ -48,16 +50,21 @@ public class Letrero extends javax.swing.JPanel {
 	este_bus.longitud = coordenadas_de_este_bus.getLongitude();
 
 	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
-	
+
 	}
     }
 
     public Letrero() {
+
+	nombre_de_parada_anterior = "";
+	nombre_de_parada_siguiente = "";
+
 	initComponents();
 	Hora();
 	init();
 	cont = new Controlador();
 	veloc = new velocimetro();
+
 	ruta();
 	coordenadas_de_este_bus = new Coordinates(0, 0);
     }
