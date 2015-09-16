@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  * @author kornmare
  */
-public class PruebaPunto {
+public class TestPunto {
 
 
     @Test
