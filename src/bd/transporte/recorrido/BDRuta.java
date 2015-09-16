@@ -14,7 +14,7 @@ public class BDRuta {
     private ResultSet rs;
 
     public BDRuta(String un_nombre_de_linea) {
-	sentencia = "select * from ruta , paradas where ruta.ID_LINEA = '" + un_nombre_de_linea + "' and paradas.ID_PARADA = ruta.ID_PARADA";
+	sentencia = "select * from ruta , paradas, linea where ruta.ID_LINEA = linea.ID_LINEA and linea.NOMBRE_LINEA ='" + un_nombre_de_linea + "' and paradas.ID_PARADA = ruta.ID_PARADA";
 	try {
 	    st = IConexionALaBaseDeDatos.una_conexion.createStatement();
 	} catch (SQLException ex) {

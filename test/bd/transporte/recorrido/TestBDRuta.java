@@ -1,6 +1,7 @@
 package bd.transporte.recorrido;
 
 
+import org.junit.Assert;
 import transporte.recorrido.ControladorDeRecorrido;
 import transporte.recorrido.Punto;
 
