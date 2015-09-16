@@ -1,0 +1,140 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Transporte;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Kevin Arnold
+ */
+public class ConexionDB {
+     
+    public static void main(String args[]){
+        Connection miConexion;
+        miConexion=ConexionDB.GetConnection();
+      
+        if(miConexion!=null)
+        {
+            JOptionPane.showMessageDialog(null, "Conexión Realizada Correctamente");
+        }
+        
+        Scanner in = new Scanner(System.in);
+        
+        ConexionDB conexion = new ConexionDB();
+        Connection con = conexion.GetConnection();
+        Statement st;
+        
+        String nombre = "";
+        double long_parada = 0.0;
+        double lat_parada = 0.0;
+        double t_norte = 0.0;
+        double t_sur = 0.0;
+        double t_este = 0.0;
+        double t_oeste = 0.0;
+        
+        System.out.println("Introduzca Nombre de la Parada : ");
+        nombre = in.next();
+        System.out.println("Introduzca Longitud de la Parada : ");
+        long_parada = in.nextDouble();
+        System.out.println(long_parada);
+        System.out.println("Introduzca Latitud de la Parada : ");
+        lat_parada = in.nextDouble();
+        System.out.println("Introduzca Tolerancia Norte :");
+        t_norte = in.nextDouble();
+        System.out.println("Introduzca Tolerancia Sud : ");
+        t_sur = in.nextDouble();
+        System.out.println("Introduzca Tolerancia Oeste :");
+        t_este = in.nextDouble();
+        System.out.println("Introduzca Tolerancia Este : ");
+        t_oeste = in.nextDouble();
+        
+        String sql = "";
+        sql = "insert into paradas (NOMBRE_PARADA,"
+                + "LONGITUD_PARADA,LATITUD_PARADA,"
+                + "TNORTE_PARADA,TSUR_PARADA,TOESTE_PARADA,TESTE_PARADA)"
+                + "values ('"+nombre+"',"+long_parada+","+lat_parada+","
+                + t_norte + ","+t_sur +","+t_oeste+","+t_este+")";
+        try {
+            st = con.createStatement();
+            st.executeUpdate(sql);
+            con.close();
+            st.close();
+            System.out.println("Insertado Correctamente.....");
+            JOptionPane.showMessageDialog(null, "Insertado Correctamente.....");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /****************************************************
+         * RECUPERANDO DATOS DE LA DB
+         ***************************************************/
+        con = conexion.GetConnection();
+        ResultSet rs;
+        sql = "select * from paradas";
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                System.out.println("ID: "+rs.getInt(1));
+                System.out.println("Nombre Parada : "+rs.getString(2));
+                System.out.println("Longitud Parada : "+rs.getDouble(3));
+                System.out.println("Latitud Parada : "+rs.getDouble(4));
+                System.out.println("Tolerancia Norte Parada : "+rs.getDouble(5));
+                System.out.println("Tolerancia Sud : "+rs.getDouble(6));
+                System.out.println("Tolerancia Este Parada : "+rs.getDouble(7));
+                System.out.println("Tolerancia Oeste Parada : "+rs.getDouble(8));
+            }
+            
+            con.close();
+            rs.close();
+            st.close();
+            //System.out.println("Insertado Correctamente.....");
+            JOptionPane.showMessageDialog(null, "Recuperando Base de Datos.....");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static Connection GetConnection()
+    {
+        Connection conexion=null;
+      
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            String servidor = "jdbc:mysql://localhost/transporte";
+            String usuarioDB="root";
+            String passwordDB="";
+            conexion= DriverManager.getConnection(servidor,usuarioDB,passwordDB);
+        }
+        catch(ClassNotFoundException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex, "Error1 en la Conexión con la BD "+ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            conexion=null;
+        }
+        catch(SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex, "Error2 en la Conexión con la BD "+ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            conexion=null;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex, "Error3 en la Conexión con la BD "+ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            conexion=null;
+        }
+        finally
+        {
+            return conexion;
+        }
+    }
+}
