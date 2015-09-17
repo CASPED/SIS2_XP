@@ -295,7 +295,6 @@ public class Letrero extends javax.swing.JPanel {
             velocidad();
             ActualizarPosicion();
         }       
-  
     };
     
     private void Activo() {
@@ -307,8 +306,8 @@ public class Letrero extends javax.swing.JPanel {
     
     private void velocidad() {
     
-    jTextVelocidad.setText(""+veloc.getVel());
-    jTextVelocidad.setBackground(veloc.getcolor());
+        jTextVelocidad.setText(""+veloc.getVel());
+        jTextVelocidad.setBackground(veloc.getcolor());
     }
     
     public final void ruta() {
@@ -337,19 +336,22 @@ public class Letrero extends javax.swing.JPanel {
         ruta();
 	//coordenadas_de_este_bus = loc.getDate();
         Coordinates localizar=new Coordinates();
-        double lat=localizar.getLatitude();
-        double lon=localizar.getLongitude();
+        String lat=localizar.getLatitude();
+        String lon=localizar.getLongitude();
         
-        System.out.println("Latitud Recuperada: "+lat);
-        System.out.println("Longitud Recuperada: "+lon);
+        double latitude=Double.parseDouble(lat);
+        double longitude=Double.parseDouble(lon);
+        
+        System.out.println("***** Latitud Recuperada: "+latitude);
+        System.out.println("***** Longitud Recuperada: "+longitude);
               
 	nombre_de_parada_anterior = "";
 	nombre_de_parada_siguiente = "";
         
 	//este_bus.latitud = coordenadas_de_este_bus.getLatitude();
 	//este_bus.longitud = coordenadas_de_este_bus.getLongitude();
-        este_bus.latitud = lat;
-        este_bus.longitud = lon;
+        este_bus.latitud = latitude;
+        este_bus.longitud = longitude;
 
 	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
 	    nombre_de_parada_anterior = nombre_de_parada_siguiente;

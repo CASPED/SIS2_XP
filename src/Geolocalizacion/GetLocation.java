@@ -7,10 +7,10 @@ import java.io.InputStream;
 
 public class GetLocation extends Thread{
     
-    String mcc  = "736";//el código de país móvil
-    String mnc  = "002";//el código de red móvil
-    String lac  = "43401";//ubicación código de área
-    String cellid="13796389";//CellID
+    String mcc  = "736";
+    String mnc  = "002";
+    String lac  = "43401";
+    String cellid="13796389";
     String url;
     public String latitude="";
     public String longitude="";
@@ -35,8 +35,8 @@ public class GetLocation extends Thread{
                     + "&cellid=" +cellid 
                     + "&fmt=txt";
             System.out.println (info);
-            //Thread t=new Thread(this);
-            //t.start();
+            Thread t=new Thread(this);
+            t.start();
         System.out.println ("Requesting position...");
         }
     }
@@ -55,12 +55,10 @@ public class GetLocation extends Thread{
                 while( (car=leer.read())!= -1){
                     destino.append((char)car);
                 }
-                //System.out.println(destino);//+
             } 
             cnx.disconnect();            		     
             
             String res=destino.toString();
-            //System.out.println(res);//+
             
             if(res.startsWith("err")){		       
                 System.out.println ("not found!");		     
@@ -74,17 +72,15 @@ public class GetLocation extends Thread{
         } catch (IOException ex) {		 
             System.out.println (ex.toString());	
         }
-        //System.out.println("Latitud " + latitude);                    
-        //System.out.println("Longitud " + longitude);
     }
     
     public String getLatitude() {
-        System.out.println("Latitud Conseguida GEO: "+latitude+(-17.385505));
+        System.out.println("***** Latitud Conseguida GEO: "+latitude+(-17.385505));
         return latitude+(-17.385505);
     }
 
     public String getLongitude() {
-        System.out.println("Latitud Conseguida GEO: "+longitude+(-66.146412));
+        System.out.println("***** Latitud Conseguida GEO: "+longitude+(-66.146412));
         return longitude+(-66.146412);
     }
 }

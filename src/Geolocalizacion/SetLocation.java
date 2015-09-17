@@ -129,26 +129,25 @@ public class SetLocation extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         lat=jTextLatitud.getText();
         lon=jTextLongitud.getText();
-        double latitude=Double.parseDouble(lat);
-        double longitude=Double.parseDouble(lon);
-        System.out.println("Latitud Introducida: "+latitude);
-        System.out.println("Longitud Introducida: "+longitude);
+        System.out.println("***** Latitud Introducida: "+lat);
+        System.out.println("***** Longitud Introducida: "+lon);
         
-        Coordinates date=new Coordinates(latitude,longitude);
+        Coordinates();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextLatitudGEOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextLatitudGEOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextLatitudGEOActionPerformed
    
-   private ActionListener actualizarPanel = new ActionListener() {
+    private ActionListener actualizarPanel = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
            Localizacion();
+           Coordinates();
         }       
     };
    
-   public void Localizacion(){
+    public void Localizacion(){
        GetLocation localizar=new GetLocation();
        localizar.iniciar();
        localizar.start();
@@ -157,11 +156,11 @@ public class SetLocation extends javax.swing.JPanel {
        jTextLatitudGEO.setText(lat);
        jTextLongitudGEO.setText(lon);
        
-       double latitude=Double.parseDouble(lat);
-       double longitude=Double.parseDouble(lon);
-       
-       Coordinates date=new Coordinates(latitude,longitude);
-   }  
+       Coordinates();
+    }  
+    public void Coordinates(){
+        Coordinates date=new Coordinates(lat,lon);
+    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
