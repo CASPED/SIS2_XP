@@ -66,7 +66,7 @@ public class Letrero extends javax.swing.JPanel {
 
 	    while (rs1.next()) {
 		cont1 = rs1.getString(1);
-                   // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
+		// System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
 		// jTextPasajeros.setText(cont);
 		pasajero = cont1;
 
@@ -102,7 +102,7 @@ public class Letrero extends javax.swing.JPanel {
 
 	    while (rs1.next()) {
 		cont1 = rs1.getString(1);
-                   // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
+		// System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
 		// jTextPasajeros.setText(cont);
 		bus = cont1;
 
@@ -397,7 +397,7 @@ public class Letrero extends javax.swing.JPanel {
 	String[] list = cont.getHora().split(":");
 
       //  if((Integer.parseInt(list[0]))>6){
-       // jTextActivo.setBackground(Color.red);
+	// jTextActivo.setBackground(Color.red);
 	// }
     }
 
@@ -408,6 +408,9 @@ public class Letrero extends javax.swing.JPanel {
     }
 
     public final void ruta() {
+	nombre_de_parada_anterior = "";
+	nombre_de_parada_siguiente = "";
+
 	double una_latitud = -1.00000;
 	double una_longitud = -1.00000;
 	double una_tolerancia_en_latitud_norte = 0.0;
@@ -430,29 +433,18 @@ public class Letrero extends javax.swing.JPanel {
      * Actualiza los campos de texto
      */
     public void ActualizarPosicion() {
-
 	GetLocation localizar = new GetLocation();
 	String lat = localizar.getLatitude();
 	String lon = localizar.getLongitude();
 
 	double latitude = Double.parseDouble(lat);
 	double longitude = Double.parseDouble(lon);
-
-	System.out.println("***** Latitud Recuperada: " + latitude);
-	System.out.println("***** Longitud Recuperada: " + longitude);
-
-	nombre_de_parada_anterior = "";
-	nombre_de_parada_siguiente = "";
-
-	//este_bus.latitud = coordenadas_de_este_bus.getLatitude();
-	//este_bus.longitud = coordenadas_de_este_bus.getLongitude();
 	este_bus.latitud = latitude;
 	este_bus.longitud = longitude;
 
 	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
 	    nombre_de_parada_anterior = nombre_de_parada_siguiente;
 	    nombre_de_parada_siguiente = unControladorDeRecorrido.nombre_del_punto_al_que_el_bus_se_dirije();
-
 	    jTextActual.setText(nombre_de_parada_anterior);
 	    jTextProximo.setText(nombre_de_parada_siguiente);
 	}
