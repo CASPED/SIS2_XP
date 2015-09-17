@@ -21,7 +21,7 @@ public class TestBDRuta {
 	Punto un_bus = new Punto("", una_latitud, una_longitud, una_tolerancia_en_latitud_norte, una_tolerancia_en_latitud_sur, una_tolerancia_en_longitud_este, una_tolerancia_en_longitud_oeste);
 	ControladorDeRecorrido unControladorDeRecorrido = new ControladorDeRecorrido(un_bus);
 
-	BDRuta la_ruta = new BDRuta("A");
+	BDRuta la_ruta = new BDRuta("Linea 300");
 	la_ruta.consultar();
 
 	while (la_ruta.tenga_mas_paradas()) {

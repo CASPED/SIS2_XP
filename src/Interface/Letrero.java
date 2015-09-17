@@ -1,5 +1,6 @@
 package Interface;
 
+import Geolocalizacion.GetLocation;
 import Transporte.Chofer;
 import Transporte.Controlador;
 import Transporte.Coordinates;
@@ -19,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Letrero extends javax.swing.JPanel {
-    
+
     public String hora;
     public Controlador cont;
     velocimetro veloc;
@@ -27,115 +28,112 @@ public class Letrero extends javax.swing.JPanel {
     ResultSet rs1;
     String bus;
     String pasajero;
-    
+
     public Punto este_bus;
     public ControladorDeRecorrido unControladorDeRecorrido;
     public String nombre_de_parada_anterior;
     public String nombre_de_parada_siguiente;
-    
+
     public Letrero() {
-        initComponents();
-        Hora();
-        busPasajero();
-        cont = new Controlador();
-        veloc = new velocimetro();
-        ruta();
+	initComponents();
+	Hora();
+	busPasajero();
+	cont = new Controlador();
+	veloc = new velocimetro();
+	ruta();
 	init();
     }
-    private String pasajero(){
-        try {
-            // se comienza la conexion con la base de datos
-        try {
-                    con1 = new Conexion();
 
+    private String pasajero() {
+	try {
+	    // se comienza la conexion con la base de datos
+	    try {
+		con1 = new Conexion();
 
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalAccessException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
-        String sql1 ="SELECT count(id_pasajero) FROM pasajero";
-        rs1 = con1.Consulta(sql1);
-        String cont1 = "";
-  
-             while (rs1.next()){
-                    cont1 = rs1.getString(1);
+	    } catch (ClassNotFoundException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (SQLException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (InstantiationException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (IllegalAccessException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+
+	    String sql1 = "SELECT count(id_pasajero) FROM pasajero";
+	    rs1 = con1.Consulta(sql1);
+	    String cont1 = "";
+
+	    while (rs1.next()) {
+		cont1 = rs1.getString(1);
                    // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
-                   // jTextPasajeros.setText(cont);
-                    pasajero=cont1;
-                    
-                }
-    
-    
-    
-        } catch (SQLException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    return pasajero;
-    
+		// jTextPasajeros.setText(cont);
+		pasajero = cont1;
+
+	    }
+
+	} catch (SQLException ex) {
+	    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	}
+
+	return pasajero;
+
     }
-    private String buses(){
-        try {
-            // se comienza la conexion con la base de datos
-        try {
-                    con1 = new Conexion();
 
+    private String buses() {
+	try {
+	    // se comienza la conexion con la base de datos
+	    try {
+		con1 = new Conexion();
 
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalAccessException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
-        String sql1 ="SELECT max(id_bus) FROM bus";
-        rs1 = con1.Consulta(sql1);
-        String cont1 = "";
-  
-             while (rs1.next()){
-                    cont1 = rs1.getString(1);
+	    } catch (ClassNotFoundException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (SQLException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (InstantiationException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (IllegalAccessException ex) {
+		Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+
+	    String sql1 = "SELECT max(id_bus) FROM bus";
+	    rs1 = con1.Consulta(sql1);
+	    String cont1 = "";
+
+	    while (rs1.next()) {
+		cont1 = rs1.getString(1);
                    // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
-                   // jTextPasajeros.setText(cont);
-                    bus=cont1;
-                    
-                }
-    
-    
-    
-        } catch (SQLException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    return bus;
-    
+		// jTextPasajeros.setText(cont);
+		bus = cont1;
+
+	    }
+
+	} catch (SQLException ex) {
+	    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+	}
+
+	return bus;
+
     }
-    
+
     private void init() {
-        new Timer(1000, actualizarPanel).start();
-        
+	new Timer(1000, actualizarPanel).start();
+
     }
-    
-    public void Hora(){
-        Calendar calcular=Calendar.getInstance();
-        hora=calcular.get(Calendar.HOUR_OF_DAY)+":"+calcular.get(Calendar.MINUTE)+":"+calcular.get(Calendar.SECOND);
-        jTextHora.setText(hora);
-        System.out.println("Hora: "+hora);
-        
+
+    public void Hora() {
+	Calendar calcular = Calendar.getInstance();
+	hora = calcular.get(Calendar.HOUR_OF_DAY) + ":" + calcular.get(Calendar.MINUTE) + ":" + calcular.get(Calendar.SECOND);
+	jTextHora.setText(hora);
+	System.out.println("Hora: " + hora);
+
     }
-    public void busPasajero(){
-    
-    jTextBus.setText(buses());
-        jTextPasajeros.setText(pasajero());
-    
+
+    public void busPasajero() {
+
+	jTextBus.setText(buses());
+	jTextPasajeros.setText(pasajero());
+
     }
 
     @SuppressWarnings("unchecked")
@@ -359,58 +357,56 @@ public class Letrero extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextProximoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextProximoActionPerformed
 
     private void jTextActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActualActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextActualActionPerformed
 
     private void jTextVelocidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextVelocidadActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextVelocidadActionPerformed
 
     private void jTextHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextHoraActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextHoraActionPerformed
 
     private void jTextConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextConductorActionPerformed
-       
+
     }//GEN-LAST:event_jTextConductorActionPerformed
 
     private void jTextActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActivoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_jTextActivoActionPerformed
-    
+
     private ActionListener actualizarPanel = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Hora();
-            Activo();
-            velocidad();
-            ActualizarPosicion();
-            busPasajero();
-           
-        }       
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    Hora();
+	    Activo();
+	    velocidad();
+	    ActualizarPosicion();
+	    busPasajero();
+
+	}
     };
-    
+
     private void Activo() {
-        jTextActivo.setText(cont.getHora()); 
-        String[] list= cont.getHora().split(":");
-        
+	jTextActivo.setText(cont.getHora());
+	String[] list = cont.getHora().split(":");
+
       //  if((Integer.parseInt(list[0]))>6){
-        
        // jTextActivo.setBackground(Color.red);
-       // }
-       
+	// }
     }
-    
+
     private void velocidad() {
-    
-        jTextVelocidad.setText(""+veloc.getVel());
-        jTextVelocidad.setBackground(veloc.getcolor());
+
+	jTextVelocidad.setText("" + veloc.getVel());
+	jTextVelocidad.setBackground(veloc.getcolor());
     }
-    
+
     public final void ruta() {
 	double una_latitud = -1.00000;
 	double una_longitud = -1.00000;
@@ -429,29 +425,29 @@ public class Letrero extends javax.swing.JPanel {
 	    unControladorDeRecorrido.agregarUnPunto(la_ruta.siguiente_parada());
 	}
     }
-    
+
     /**
      * Actualiza los campos de texto
      */
     public void ActualizarPosicion() {
-	
-        Coordinates localizar=new Coordinates();
-        String lat=localizar.getLatitude().equals(null) ? "0.0" : localizar.getLatitude();
-        String lon=localizar.getLongitude().equals(null) ? "0.0" : localizar.getLongitude();
-        
-	double latitude=Double.parseDouble(lat);
-        double longitude=Double.parseDouble(lon);
-        
-        System.out.println("***** Latitud Recuperada: "+latitude);
-        System.out.println("***** Longitud Recuperada: "+longitude);
-              
+
+	GetLocation localizar = new GetLocation();
+	String lat = localizar.getLatitude();
+	String lon = localizar.getLongitude();
+
+	double latitude = Double.parseDouble(lat);
+	double longitude = Double.parseDouble(lon);
+
+	System.out.println("***** Latitud Recuperada: " + latitude);
+	System.out.println("***** Longitud Recuperada: " + longitude);
+
 	nombre_de_parada_anterior = "";
 	nombre_de_parada_siguiente = "";
-        
+
 	//este_bus.latitud = coordenadas_de_este_bus.getLatitude();
 	//este_bus.longitud = coordenadas_de_este_bus.getLongitude();
-        este_bus.latitud = latitude;
-        este_bus.longitud = longitude;
+	este_bus.latitud = latitude;
+	este_bus.longitud = longitude;
 
 	if (unControladorDeRecorrido.estaElBusEnElRadioDeAlcanceDeAlgunPunto()) {
 	    nombre_de_parada_anterior = nombre_de_parada_siguiente;
