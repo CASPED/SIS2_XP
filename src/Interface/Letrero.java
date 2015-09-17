@@ -36,12 +36,11 @@ public class Letrero extends javax.swing.JPanel {
     public Letrero() {
         initComponents();
         Hora();
-        init();
         busPasajero();
         cont = new Controlador();
         veloc = new velocimetro();
-	
         ruta();
+	init();
     }
     private String pasajero(){
         try {
@@ -435,13 +434,12 @@ public class Letrero extends javax.swing.JPanel {
      * Actualiza los campos de texto
      */
     public void ActualizarPosicion() {
-        Coordinates localizar=new Coordinates();
-        String lat=localizar.getLatitude();
-        String lon=localizar.getLongitude();
-        
-	System.out.println(localizar.getLatitude())
 	
-        double latitude=Double.parseDouble(lat);
+        Coordinates localizar=new Coordinates();
+        String lat=localizar.getLatitude().equals(null) ? "0.0" : localizar.getLatitude();
+        String lon=localizar.getLongitude().equals(null) ? "0.0" : localizar.getLongitude();
+        
+	double latitude=Double.parseDouble(lat);
         double longitude=Double.parseDouble(lon);
         
         System.out.println("***** Latitud Recuperada: "+latitude);
