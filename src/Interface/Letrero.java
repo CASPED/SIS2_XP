@@ -40,6 +40,8 @@ public class Letrero extends javax.swing.JPanel {
         busPasajero();
         cont = new Controlador();
         veloc = new velocimetro();
+	
+        ruta();
     }
     private String pasajero(){
         try {
@@ -433,12 +435,12 @@ public class Letrero extends javax.swing.JPanel {
      * Actualiza los campos de texto
      */
     public void ActualizarPosicion() {
-        ruta();
-	//coordenadas_de_este_bus = loc.getDate();
         Coordinates localizar=new Coordinates();
         String lat=localizar.getLatitude();
         String lon=localizar.getLongitude();
         
+	System.out.println(localizar.getLatitude())
+	
         double latitude=Double.parseDouble(lat);
         double longitude=Double.parseDouble(lon);
         

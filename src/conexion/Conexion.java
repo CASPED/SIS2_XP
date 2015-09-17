@@ -28,7 +28,7 @@ public class Conexion {
         //datos necesarios para la conexion
     String URL_bd="jdbc:mysql://localhost/sisbdxp";
     String usuario="root";
-    String contraseña="";
+    String contraseña= System.getProperty("os.name").toLowerCase().equals("win") ? "" : "23lol7";
     //conexion con la bd
     con=DriverManager.getConnection(URL_bd,usuario,contraseña);
     // se crea una Statement para asi poder usar sentencias sql
