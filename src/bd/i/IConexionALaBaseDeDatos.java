@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class IConexionALaBaseDeDatos {
 
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/sisbdxp";
+    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost/sisbdxp";
 
-    static final String USUARIO = "root";
-    static final String CONTRASENIA = System.getProperty("os.name").toLowerCase().equals("win") ? "" : "23lol7";
+    private static final String USUARIO = "root";
+    private static final String CONTRASENIA = System.getProperty("os.name").toLowerCase().equals("win") ? "" : "23lol7";
 
     public static Connection una_conexion = null;
 
