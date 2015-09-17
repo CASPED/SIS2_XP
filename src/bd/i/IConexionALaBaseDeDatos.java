@@ -10,7 +10,7 @@ public class IConexionALaBaseDeDatos {
     static final String DB_URL = "jdbc:mysql://localhost/sisbdxp";
 
     static final String USUARIO = "root";
-    static final String CONTRASENIA = "23lol7";
+    static final String CONTRASENIA = System.getProperty("os.name").toLowerCase().equals("win") ? "" : "23lol7";
 
     public static Connection una_conexion = null;
 
