@@ -11,12 +11,22 @@ import java.util.Calendar;
 import javax.swing.Timer;
 import transporte.recorrido.ControladorDeRecorrido;
 import transporte.recorrido.Punto;
+import conexion.Conexion;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Letrero extends javax.swing.JPanel {
     
     public String hora;
     public Controlador cont;
     velocimetro veloc;
+    Conexion con1;
+    ResultSet rs1;
+    String bus;
+    String pasajero;
     
     public Punto este_bus;
     public ControladorDeRecorrido unControladorDeRecorrido;
@@ -27,12 +37,90 @@ public class Letrero extends javax.swing.JPanel {
         initComponents();
         Hora();
         init();
+        busPasajero();
         cont = new Controlador();
         veloc = new velocimetro();
+    }
+    private String pasajero(){
+        try {
+            // se comienza la conexion con la base de datos
+        try {
+                    con1 = new Conexion();
+
+
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        
+        String sql1 ="SELECT count(id_pasajero) FROM pasajero";
+        rs1 = con1.Consulta(sql1);
+        String cont1 = "";
+  
+             while (rs1.next()){
+                    cont1 = rs1.getString(1);
+                   // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
+                   // jTextPasajeros.setText(cont);
+                    pasajero=cont1;
+                    
+                }
+    
+    
+    
+        } catch (SQLException ex) {
+            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    return pasajero;
+    
+    }
+    private String buses(){
+        try {
+            // se comienza la conexion con la base de datos
+        try {
+                    con1 = new Conexion();
+
+
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        
+        String sql1 ="SELECT max(id_bus) FROM bus";
+        rs1 = con1.Consulta(sql1);
+        String cont1 = "";
+  
+             while (rs1.next()){
+                    cont1 = rs1.getString(1);
+                   // System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa"+cont);
+                   // jTextPasajeros.setText(cont);
+                    bus=cont1;
+                    
+                }
+    
+    
+    
+        } catch (SQLException ex) {
+            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    return bus;
+    
     }
     
     private void init() {
         new Timer(1000, actualizarPanel).start();
+        
     }
     
     public void Hora(){
@@ -40,6 +128,13 @@ public class Letrero extends javax.swing.JPanel {
         hora=calcular.get(Calendar.HOUR_OF_DAY)+":"+calcular.get(Calendar.MINUTE)+":"+calcular.get(Calendar.SECOND);
         jTextHora.setText(hora);
         System.out.println("Hora: "+hora);
+        
+    }
+    public void busPasajero(){
+    
+    jTextBus.setText(buses());
+        jTextPasajeros.setText(pasajero());
+    
     }
 
     @SuppressWarnings("unchecked")
@@ -150,7 +245,6 @@ public class Letrero extends javax.swing.JPanel {
 
         jTextBus.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jTextBus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextBus.setText("225");
         jTextBus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -294,13 +388,19 @@ public class Letrero extends javax.swing.JPanel {
             Activo();
             velocidad();
             ActualizarPosicion();
+            busPasajero();
+           
         }       
     };
     
     private void Activo() {
         jTextActivo.setText(cont.getHora()); 
         String[] list= cont.getHora().split(":");
-        jTextActivo.setBackground(cont.getColor());
+        
+      //  if((Integer.parseInt(list[0]))>6){
+        
+       // jTextActivo.setBackground(Color.red);
+       // }
        
     }
     
