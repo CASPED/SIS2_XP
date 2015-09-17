@@ -2,31 +2,34 @@
 package Transporte;
 
 public class Coordinates {
-    private double latitude; //in decimal degrees.
-    private double longitude; //in decimal degrees.
-
-    public Coordinates(double latitude, double longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public static String latitude;
+    public static String longitude;
+    
+    public Coordinates() {
+        
     }
 
     public Coordinates(String latitude, String longitude) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   public void setLongitude(double longitude) {
+        this.latitude = latitude;
         this.longitude = longitude;
     }
 
-   public void setLatitude(double latitude) {
+   public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+   public void setLatitude(String latitude) {
         this.latitude = latitude;
    }
 
-    public double getLatitude() {
+    public String getLatitude() {
+        System.out.println("***** Latitud Guardada: "+latitude);
         return latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
+        System.out.println("***** Longitud Guardada: "+longitude);
         return longitude;
+  
     }
 }
