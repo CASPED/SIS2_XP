@@ -44,7 +44,7 @@ public class TestVelocimetro {
      }
      
      @Test
-     public void velocidadSobrepasada() {
+     public void TestVelocidadSobrepasada() {
      veloc = new velocimetro();
      boolean res=veloc.control_velocidad(95);
      assertEquals(res,false);
