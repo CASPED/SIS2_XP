@@ -15,7 +15,7 @@ import javax.swing.JTextField;
      if(control_velocidad(vel)){
      n.setBackground(Color.WHITE);   
      }else{
-     n.setBackground(Color.red);
+     n.setBackground(Color.RED);
      }
      return n;
  }
