@@ -21,10 +21,7 @@ import javax.swing.JTextField;
  }
  
  public boolean control_velocidad(int vel){
-   if(vel>max)   
-   return false;
-   else
-   return true;
+   return vel>max;
  }
  
 
