@@ -35,18 +35,19 @@ public class TestVelocimetro {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
+    @Test
      public void TestVelocidadAceptada() {
      veloc = new velocimetro();
-         assertEquals(Color.WHITE, veloc.getcolor());
+     boolean res=veloc.control_velocidad(65);
+     assertEquals(res,true);
          
      }
      
      @Test
      public void velocidadSobrepasada() {
      veloc = new velocimetro();
-     veloc.setVel(95);
-         assertEquals(Color.RED, veloc.getcolor());
+     boolean res=veloc.control_velocidad(95);
+     assertEquals(res,false);
      
      }
 }
