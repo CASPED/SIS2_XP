@@ -6,28 +6,36 @@
 package Transporte;
 
 import java.awt.Color;
+import javax.swing.JTextField;
 
-public class velocimetro {
- Color c = Color.WHITE;
- int vel = 0;  
- 
- public int getVel(){
-   vel = (int) (Math.random()*100);
-   return vel;
+ public class velocimetro {
+ int max = 90;    
+ public JTextField actualizar(JTextField n){
+     int vel = (int)(Math.random()*100);   n.setText(""+vel); 
+     if(control_velocidad(vel)){
+     n.setBackground(Color.WHITE);   
+     }else{
+     n.setBackground(Color.red);
+     }
+     return n;
  }
  
- public Color getcolor(){
- if(vel>90) c = Color.RED;
- else c=Color.WHITE;
- return c;
+ public boolean control_velocidad(int vel){
+   if(vel>max)   
+   return false;
+   else
+   return true;
  }
  
- public void setVel(int ve){
- vel=ve;
+
+ public void setVelMax(int Maximo){
+ max=Maximo;
  }
+}
+         
+ 
   
    
        
     
-    
-}
+  
