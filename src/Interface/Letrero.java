@@ -402,9 +402,9 @@ public class Letrero extends javax.swing.JPanel {
     }
 
     private void velocidad() {
+    	
+        jTextVelocidad =veloc.actualizar(jTextVelocidad);
 
-	jTextVelocidad.setText("" + veloc.getVel());
-	jTextVelocidad.setBackground(veloc.getcolor());
     }
 
     public final void ruta() {
