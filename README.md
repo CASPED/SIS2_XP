@@ -12,5 +12,3 @@ Lista de JTextField:
   | jTextPasajeros
   
   Nota: esta facil identificarlos por el nombre de cada variable.
-
-Hello there, dreico is here....
