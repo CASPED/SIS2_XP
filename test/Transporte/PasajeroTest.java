@@ -44,12 +44,11 @@ public class PasajeroTest {
     @Test
     public void testGetNombre() {
         System.out.println("getNombre");
-        Pasajero instance = null;
+        Pasajero instance = new Pasajero("", "", 0);
         String expResult = "";
         String result = instance.getNombre();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -58,12 +57,10 @@ public class PasajeroTest {
     @Test
     public void testGetApellido() {
         System.out.println("getApellido");
-        Pasajero instance = null;
+        Pasajero instance = new Pasajero("", "", 0);
         String expResult = "";
         String result = instance.getApellido();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -72,12 +69,12 @@ public class PasajeroTest {
     @Test
     public void testGetEdad() {
         System.out.println("getEdad");
-        Pasajero instance = null;
+        Pasajero instance = new Pasajero("", "", 0);
         int expResult = 0;
         int result = instance.getEdad();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+
     }
 
     /**
@@ -87,10 +84,8 @@ public class PasajeroTest {
     public void testSetNombre() {
         System.out.println("setNombre");
         String nombre = "";
-        Pasajero instance = null;
+        Pasajero instance = new Pasajero("", "", 0);
         instance.setNombre(nombre);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -100,10 +95,8 @@ public class PasajeroTest {
     public void testSetApellido() {
         System.out.println("setApellido");
         String apellido = "";
-        Pasajero instance = null;
+        Pasajero instance = new Pasajero("", "", 0);
         instance.setApellido(apellido);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -113,10 +106,8 @@ public class PasajeroTest {
     public void testSetEdad() {
         System.out.println("setEdad");
         int edad = 0;
-        Pasajero instance = null;
+        Pasajero instance = new Pasajero("", "", 0);
         instance.setEdad(edad);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

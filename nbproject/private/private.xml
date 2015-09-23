@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Geolocalizacion/SetLocation.java</file>
+            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Interface/Letrero.java</file>
+            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/test/Transporte/PasajeroTest.java</file>
             <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/test/transporte/recorrido/i/TestICoordenadas.java</file>
             <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Transporte/Coordinates.java</file>
-            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Interface/Letrero.java</file>
-            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/src/conexion/Conexion.java</file>
-            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/test/Transporte/CoordinatesTest.java</file>
+            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/src/Geolocalizacion/GetLocation.java</file>
+            <file>file:/home/kornmare/Kornmare/0/Sistemas%20de%20Información%20II/SIS2_XP/test/bd/transporte/recorrido/TestBDRuta.java</file>
         </group>
     </open-files>
 </project-private>
